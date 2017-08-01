@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid">
+        <div class="row fh5co-post-entry">
+    {% for x in qs %}
+            <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+                 <figure>
+                <a href="{% url "shop:detail" x.id %}"><img src="{{ x.image.url }}" alt="Image" class="img-responsive"></a>
+                </figure>
+                <span class="fh5co-meta"><a href="single.html">{{x.tags}}</a></span>
+                <h2 class="fh5co-article-title"><a href="single.html">{{x.title}}</a></h2>
+                <span class="fh5co-meta fh5co-date">July 27th, 2017</span>
+              </article>
+    {% endfor %}
+
+            <div class="clearfix visible-lg-block visible-md-block visible-sm-block visible-xs-block"></div>
+
+    </div>
+    </div>
+
+{% endblock %}
