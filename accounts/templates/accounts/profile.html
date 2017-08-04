@@ -5,5 +5,8 @@
     <li>is_staff : {{ user.is_staff }}</li>
     <li>is_superuser : {{ user.is_superuser }}</li>
     <li>{{ user.date_joined }}</li>
-    <li>추천맛집: {{recommendation}}</li>
+    {% for shop in recommendation %}
+        <il>{{shop.title}}</il>
+        <li><a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a></li>
+    {%endfor%}
 </ul>

@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models import Avg
+from django.core.urlresolvers import reverse
 
 
 
@@ -48,6 +49,9 @@ class Rating(models.Model):
 
     class Meta:
         ordering = ['user']
+
+    def get_absolute_url(self):
+        return reverse('shop:detail', args=[self.shop.pk])
 
 
 

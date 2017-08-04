@@ -45,8 +45,11 @@ def rating_new(request, shop_pk):
                 record_check = rating_query_set.filter(user = request.user, shop = shop)## 같은 유저가 같은 식당을 평가한 레코드가 있으면...
 
                 if record_check:
-                    record_check.score = form.score
-                    return redirect('shop:detail', record_check.shop.pk)# 저장한 후 식당 상세페이지로 이동
+                    #print(record_check[0].score)
+                    record_check.update(score = int(form.cleaned_data['score']))
+                    #return redirect('shop:detail', record_check[0].shop.pk)# 저장한 후 식당 상세페이지로 이동
+                    #return redirect('shop:detail', 1)
+                    return redirect(record_check[0])
 
                 else:
                     rating = form.save(commit=False)# 유저가 그 식당을 평가한 레코드가 없다면...
@@ -55,7 +58,7 @@ def rating_new(request, shop_pk):
                     rating.save()
                     rating.shop.calc_score()
                     return redirect('shop:detail', rating.shop.pk)# 저장한 후 식당 상세페이지로 이동
-            else:
+            else: # 사용자 평가가 한건도 없음
                 rating = form.save(commit=False)
                 rating.shop = shop
                 rating.user = request.user

@@ -31,9 +31,17 @@ def similarity_score(person1,person2):
 def person_correlation(person1, person2):
    # To get both rated items
     both_rated = {}
-    for item in dataset[person1]:
-        if item in dataset[person2]:
-            both_rated[item] = 1
+
+    try:
+        for item in dataset[person1]:
+            if item in dataset[person2]:
+                both_rated[item] = 1
+    except KeyError as e:
+        print(''+ str(e) + 'key error')
+        return -1
+    except Exception as e:
+        print("other error than key error...")
+
 
     number_of_ratings = len(both_rated)
 
@@ -73,6 +81,7 @@ def most_similar_users(person, number_of_users):
     return scores[0:number_of_users]
         
 def user_recommendations(person):
+    produce_dataset()
     # Gets recommendations for a person by using a weighted average of every other user's rankings
     totals = {}
     simSums = {}
