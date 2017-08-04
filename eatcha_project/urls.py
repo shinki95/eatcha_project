@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.conf .urls.static import static
 from django.conf import settings
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^shop/', include('shop.urls', namespace='shop')),
-] + static(settings.MEDIA_URL, documnet_root=settings.MEDIA_ROOT)
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

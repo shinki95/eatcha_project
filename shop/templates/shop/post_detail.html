@@ -1,4 +1,5 @@
-{% extends "layout.html" %}
+{% extends "shop/layout.html" %}
+
 {% block content %}
     {% if prev_post %}
         <a href="{% url "shop:detail" prev_post.id %}?tag={{ tag }}"class="fh5co-post-prev"><span><i class="icon-chevron-left"></i> Prev</span></a>

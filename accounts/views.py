@@ -2,6 +2,9 @@ from django.shortcuts import redirect, render
 from . forms import SignupForm
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from shop.utils.collab_filtering import  *
+from shop.utils.produce_dataset import produce_dataset
+
 
 # Create your views here.
 def signup(request):
@@ -18,4 +21,6 @@ def signup(request):
 
 @login_required
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    produce_dataset()
+    return render(request, 'accounts/profile.html',
+                  {'recommendation':  user_recommendations(str(request.user)),})
