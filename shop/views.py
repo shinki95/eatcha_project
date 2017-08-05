@@ -10,7 +10,7 @@ from .utils.collab_filtering import *
 def post_tag(request, tag):
     qs_tag = Post.objects.filter(tag_set__name__iexact=tag)
 
-    
+
     return render(request, 'shop/post_tag.html',{
         'tag': tag,
         'shop_list_tag': qs_tag
@@ -42,6 +42,16 @@ def post_detail(request, id):
         'prev_post': prev_post_list.first(),
         'tag': tag,
     })
+
+def post_home(request):
+    point = Post.objects.order_by('-score')[0:8]
+
+    return render(request, 'shop/post_home.html',
+        {
+        'point' : point,
+
+
+        })
 
 
 @login_required
@@ -94,4 +104,4 @@ def recommendation(request):
 
     return render(request, 'shop/recommendation_list.html',{
         'recommendation': recommend_restaurant_list
-    })                 
+    })
