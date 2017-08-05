@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100, verbose_name="식당이름")
     image = models.ImageField()
     content = models.TextField(max_length=500, verbose_name="내용")
-    lnglat = models.CharField(max_length=100, blank=True, verbose_name="식당위")
+    lnglat = models.CharField(max_length=100, blank=True, verbose_name="식당위치")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     tag_set = models.ManyToManyField('Tag', blank=True)
@@ -16,27 +16,27 @@ class Post(models.Model):
 
     class Meta:
         ordering=['-id']
-    
+
     def __str__(self):
         return self.title
 
     @property
     def score_point(self):
         return self.score / 10
-    
+
     @property
     def calc_score(self):
         avg = self.rating_set.all().aggregate(Avg('score'))['score__avg']
         self.score = int(avg * 10)
         self.save()
         return self.score/10
-    
+
     @property
     def lng(self):
         if self.lnglat:
             return self.lnglat.split(',')[0]
         return None
-    
+
     @property
     def lat(self):
         if self.lnglat:

@@ -78,7 +78,7 @@
             <a class="navbar-brand" href="{% url 'shop:recommendation' %}">추천메뉴</a>
             <a class="navbar-brand" href="{% url 'shop:tag' 'snu'%}">서울대입구</a>
             <a class="navbar-brand" href="{% url 'shop:tag' 'sinchon'%}">신촌</a>
-            
+
 
         </div>
     </div>
@@ -114,7 +114,6 @@
                     <li><a href="{% url 'accounts:login' %}">로그인</a></li>
                     {% else %}
                     <li><a href="{% url 'shop:recommendation' %}">추천 맛집</a></li>
-                    <li><a href="#">내 친구가 가본 맛집</a></li>
                     <li><a href="{% url 'accounts:profile' %}">프로필</a></li>
                     <li><a href="{% url 'accounts:logout' %}">로그아웃</a></li>
                     {% endif %}
