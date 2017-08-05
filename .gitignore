@@ -47,7 +47,7 @@ Temporary Items
 .apdisk
 
 /media/
-.db.sqlite3
+db.sqlite3
 *.pyc
 /media
 /.vscode
