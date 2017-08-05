@@ -5,6 +5,7 @@
     <li>is_staff : {{ user.is_staff }}</li>
     <li>is_superuser : {{ user.is_superuser }}</li>
     <li>{{ user.date_joined }}</li>
+    <li><img src="{{ user.socialaccount_set.all.first.get_avatar_url }}" /></li>
     {% for shop in recommendation %}
         <il>{{shop.title}}</il>
         <li><a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a></li>
