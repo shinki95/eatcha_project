@@ -28,7 +28,7 @@
 
 <div class="container-fluid">
         <div class="row fh5co-post-entry">
-    {% for shop in shop_list %}
+    {% for shop in shop_list_tag %}
             <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
                  <figure>
                 <a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a>
@@ -68,4 +68,3 @@
     </div>
 
 {% endblock %}
-

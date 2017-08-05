@@ -4,17 +4,21 @@ from .forms import RatingForm
 from django.contrib.auth.decorators import login_required
 from .models import Rating
 from .utils.collab_filtering import *
-from .utils.produce_dataset import produce_dataset
 
 # Create your views here.
 
+def post_tag(request, tag):
+    qs_tag = Post.objects.filter(tag_set__name__iexact=tag)
+    return render(request, 'shop/post_tag.html',{
+        'shop_list_tag': qs_tag
+    })
+
+
 def post_list(request):
-    produce_dataset()
     qs = Post.objects.all()
     return render(request, 'shop/post_list.html', {
-
         'shop_list':qs,
-        'recomendation': user_recommendations(str(request.user))
+        'recommendation': user_recommendations(str(request.user))
     })
 
 def post_detail(request, id):
@@ -85,4 +89,4 @@ def recommendation(request):
 
     return render(request, 'shop/recommendation_list.html',{
         'recommendation': recommend_restaurant_list
-    })
+    })                 
