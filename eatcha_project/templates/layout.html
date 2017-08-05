@@ -65,12 +65,24 @@
     <!-- Main JS -->
     <script src="{% static 'js/main.js' %}"></script>
 
-    <script src="{%static 'csrf.js'%}"></script>
+    <script src="{% static 'csrf.js' %}"></script>
     {%block head%}
     {%endblock%}
 
     </head>
     <body>
+        <div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'shop:list' %}">Home</a>
+            <a class="navbar-brand" href="{% url 'shop:recommendation' %}">추천메뉴</a>
+            <a class="navbar-brand" href="{% url 'shop:tag' 'snu'%}">서울대입구</a>
+            <a class="navbar-brand" href="{% url 'shop:tag' 'sinchon'%}">신촌</a>
+            
+
+        </div>
+    </div>
+</div>
     <div id="fh5co-offcanvas">
         <a href="#" class="fh5co-close-offcanvas js-fh5co-close-offcanvas"><span><i class="icon-cross3"></i> <span>Close</span></span></a>
         <div class="fh5co-bio">
@@ -98,13 +110,13 @@
                     <li><a href="#">주간 랭킹</a></li>
                     <li><a href="#">지역별</a></li>
                     {% if not user.is_authenticated %}
-                    <li><a href="{%url 'accounts:signup'%}">회원가입</a></li>
-                    <li><a href="{%url 'accounts:login'%}">로그인</a></li>
+                    <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
+                    <li><a href="{% url 'accounts:login' %}">로그인</a></li>
                     {% else %}
-                    <li><a href="#">내가 가본 맛집</a></li>
+                    <li><a href="{% url 'shop:recommendation' %}">추천 맛집</a></li>
                     <li><a href="#">내 친구가 가본 맛집</a></li>
-                    <li><a href="{%url 'accounts:profile'%}">프로필</a></li>
-                    <li><a href="{%url 'accounts:logout'%}">로그아웃</a></li>
+                    <li><a href="{% url 'accounts:profile' %}">프로필</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">로그아웃</a></li>
                     {% endif %}
 
                 </ul>

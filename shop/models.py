@@ -23,7 +23,8 @@ class Post(models.Model):
     @property
     def score_point(self):
         return self.score / 10
-
+    
+    @property
     def calc_score(self):
         avg = self.rating_set.all().aggregate(Avg('score'))['score__avg']
         self.score = int(avg * 10)
