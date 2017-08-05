@@ -29,6 +29,18 @@ class Post(models.Model):
         self.score = int(avg * 10)
         self.save()
         return self.score/10
+    
+    @property
+    def lng(self):
+        if self.lnglat:
+            return self.lnglat.split(',')[0]
+        return None
+    
+    @property
+    def lat(self):
+        if self.lnglat:
+            return self.lnglat.split(',')[1]
+        return None
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
