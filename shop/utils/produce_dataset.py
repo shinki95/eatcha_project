@@ -1,9 +1,10 @@
 from django.contrib.auth.models import User
 #from django.conf import settings
 
-def produce_dataset():
-    dataset = {}
+dataset = {}
 
+def produce_dataset():
+    #dataset = {}
     for user in User.objects.all():
         rating_dict = {}
         for rating in user.rating_set.all().order_by('shop'):

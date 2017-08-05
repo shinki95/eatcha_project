@@ -1,7 +1,9 @@
 #import code
-from .recommendation_data import dataset
+#from .recommendation_data import dataset
 from math import sqrt
 from .produce_dataset import produce_dataset
+from .produce_dataset import dataset
+
 
 def similarity_score(person1,person2):
 

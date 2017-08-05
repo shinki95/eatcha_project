@@ -4,10 +4,12 @@ from .forms import RatingForm
 from django.contrib.auth.decorators import login_required
 from .models import Rating
 from .utils.collab_filtering import *
+from .utils.produce_dataset import produce_dataset
 
 # Create your views here.
 
 def post_list(request):
+    produce_dataset()
     qs = Post.objects.all()
     return render(request, 'shop/post_list.html', {
 
@@ -73,3 +75,14 @@ def rating_new(request, shop_pk):
         'form': form,
     })
 
+
+def recommendation(request):
+    recommendation = user_recommendations(str(request.user))
+    recommend_restaurant_list = []
+    for name in recommendation:
+        object = Post.objects.get(title=name)
+        recommend_restaurant_list.append(object)
+
+    return render(request, 'shop/recommendation_list.html',{
+        'recommendation': recommend_restaurant_list
+    })
