@@ -10,6 +10,7 @@ from .utils.collab_filtering import *
 def post_list(request):
     qs = Post.objects.all()
     return render(request, 'shop/post_list.html', {
+
         'shop_list':qs,
         'recomendation': user_recommendations(str(request.user))
     })

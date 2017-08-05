@@ -38,7 +38,7 @@
                         <li>
                         <a href="#">{{ shop.name }}</a>
 
-                        <span class="label label-info">{{ shop.score_point }}</span>
+                        <span class="label label-info">{{ shop.calc_score }}</span>
 
                         <a href="{% url "shop:rating_new" shop.pk%}" >평점주기</a>
 
