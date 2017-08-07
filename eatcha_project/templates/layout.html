@@ -1,5 +1,6 @@
 {%load static%}
 {%load staticfiles%}
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -8,7 +9,7 @@
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Eatcha &mdash; Free Fully Responsive HTML5 Bootstrap Template by FREEHTML5.co</title>
+    <title>Eatcha &mdash; - 나만의 고유의 맛집</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -41,10 +42,11 @@
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <link rel="stylesheet" href="{% static 'css/car.css' %}">
+
 
      {% block css %}
      {% endblock css %}
@@ -73,48 +75,52 @@
     <script src="{% static 'csrf.js' %}"></script>
     {%block head%}
     {%endblock%}
-
-    </head>
-    <body>
-        <div class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'shop:list' %}">Home</a>
-            <a class="navbar-brand" href="{% url 'shop:recommendation' %}">추천메뉴</a>
-            <a class="navbar-brand" href="{% url 'shop:tag' 'snu'%}">서울대입구</a>
-            <a class="navbar-brand" href="{% url 'shop:tag' 'sinchon'%}">신촌</a>
-
-
-        </div>
+<header>
+<nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="{% url "shop:list" %}" class="navbar-brand">Home</a>
     </div>
-</div>
-    <div id="fh5co-offcanvas">
-        <a href="#" class="fh5co-close-offcanvas js-fh5co-close-offcanvas"><span><i class="icon-cross3"></i> <span>Close</span></span></a>
-        <div class="fh5co-bio">
-            <figure>
+    <div id="navbar-menu" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
 
-            </figure>
-            <h3 class="heading">Manager</h3>
-            <h2>피로그래밍 7th</h2>
-            <br><br>
-            <p>서울대학교 - 신윤기</p>
-            <p>한양대학교 - 김지훈</p>
-            <p>한양대학교 - 김태훈</p>
-            <p>성신여자대학교 - 이지은</p>
-            <ul class="fh5co-social">
-                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                <li><a href="#"><i class="icon-instagram"></i></a></li>
-            </ul>
-        </div>
+            <li><a href="{% url 'shop:recommendation' %}">추천메뉴</a></li>
 
-        <div class="fh5co-menu">
-            <div class="fh5co-box">
-                <h3 class="heading">Categories</h3>
-                <ul>
-                    <li><a href="#">주간 랭킹</a></li>
-                    <li><a href="#">지역별</a></li>
-                    {% if not user.is_authenticated %}
+
+
+
+            <li class="hidden-sm hidden-md hidden-lg"><a href="{% url 'shop:tag' 'snu'%}">서울대입구</a>
+            <li class="hidden-sm hidden-md hidden-lg"><a href="{% url 'shop:tag' 'sinchon'%}">신촌</a>
+            <li class="hidden-sm hidden-md hidden-lg"><a href="/cities/">Cities</a></li>
+            <li class="hidden-sm hidden-md hidden-lg"><a href="/reports/">Reports</a></li>
+            <li class="hidden-sm hidden-md hidden-lg"><a href="/users/">Users</a></li>
+
+
+            <li class="dropdown hidden-xs">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">지역별 맛집<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li class="hidden-lg hidden-md"><a href="/blackouts/">Blackouts</a></li>
+                    <li class="hidden-lg hidden-md"><a href="/tasks/">Tasks</a></li>
+                    <li class="hidden-lg"><a href="/songs/">Songs</a></li>
+                    <li class="hidden-lg"><a href="/testimonials/">Testimonials</a></li>
+                    <li class="divider hidden-lg"></li>
+
+
+                    <li><a href="{% url 'shop:tag' 'snu'%}">서울대입구</a>
+                    <li><a href="{% url 'shop:tag' 'sinchon'%}">신촌</a>
+                    <li><a href="/cities/">Cities</a></li>
+                    <li><a href="/reports/">Reports</a></li>
+                    <li><a href="/users/">Users</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+             {% if not user.is_authenticated %}
                     <li><a href="{% url 'accounts:signup' %}">회원가입</a></li>
                     <li><a href="{% url 'accounts:login' %}">로그인</a></li>
                     {% else %}
@@ -122,40 +128,23 @@
                     <li><a href="{% url 'accounts:profile' %}">프로필</a></li>
                     <li><a href="{% url 'accounts:logout' %}">로그아웃</a></li>
                     {% endif %}
+        </ul>
+    </div>
+</div>
 
-                </ul>
-            </div>
-            <div class="fh5co-box">
-                <h3 class="heading">Search</h3>
-                <form action="#">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Type a keyword">
-                    </div>
-                </form>
+    </header>
+    <br>
+    <div class="container-fluid">
+        <div>
+            <div >
+
+                <div class="col-lg-12 col-md-12 text-center">
+                <h1 ><a href="{% url "shop:list" %}">Eatcha</a></h1>
+                </div>
             </div>
         </div>
     </div>
-    <!-- END #fh5co-offcanvas -->
-    <header id="fh5co-header">
-
-        <div class="container-fluid">
-
-            <div class="row">
-                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                <ul class="fh5co-social">
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-instagram"></i></a></li>
-                </ul>
-                <div class="col-lg-12 col-md-12 text-center">
-                    <big><h1 id="fh5co-logo"><a href="{% url "shop:list" %}">Eatcha</a></h1></big>
-                </div>
-
-            </div>
-
-        </div>
-
-    </header>
+    <br><br>
     <!-- END #fh5co-header -->
     {% block content %}
 

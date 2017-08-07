@@ -25,7 +25,7 @@ SECRET_KEY = 'dd=(&&!k8q($3n8-fzhwvb=6n-imf4!g2d-0dke-!s!24r@c7o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # midify
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
