@@ -47,9 +47,9 @@ Temporary Items
 .apdisk
 
 /media/
-.db.sqlite3
+db.sqlite3
 *.pyc
-/media
+media
 /.vscode
 __pycache__/
 __pycache__
