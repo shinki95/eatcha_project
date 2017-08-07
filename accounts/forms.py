@@ -7,8 +7,8 @@ class SignupForm(UserCreationForm):
     address = forms.CharField()
 
     class Meta(UserCreationForm.Meta):
-         #fields = ('username', 'email')
-        fields = UserCreationForm.Meta.fields + ('email',)
+        fields = ('username', 'password1', 'password2', 'phone_number', 'address', 'email')
+        #fields = UserCreationForm.Meta.fields + ('email',)
 
     def save(self):
         user = super(self).save()
@@ -23,6 +23,9 @@ class SignupForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     answer = forms.IntegerField(label = '3+3=?')
+
+    class Meta(AuthenticationForm):
+        fields = ('username', 'password', 'answer')
 
     def clean_answer(self):
         answer = self.cleaned_data.get('answer', None)
