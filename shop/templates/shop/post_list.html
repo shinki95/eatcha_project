@@ -35,12 +35,12 @@
                 </figure>
                 <span class="fh5co-meta"><a href="single.html">{{shop.tags}}</a></span>
                 <h2 class="fh5co-article-title"><a href="single.html">{{shop.title}}</a></h2>
-                <ul>
-                        <li>
+
+
                         <a href="#">{{ shop.name }}</a>
 
                         <span class="label label-info">{{ shop.calc_score }}</span>
-                                
+
                         <a href="{% url "shop:rating_new" shop.pk%}" class="rating" data-score="5">
                             5점
                         </a>
@@ -56,8 +56,8 @@
                         <a href="{% url "shop:rating_new" shop.pk%}" class="rating" data-score="1">
                             1점
                         </a>
-                    </li>
-                </ul>
+
+
                 <span class="fh5co-meta fh5co-date">July 27th, 2017</span>
               </article>
     {% endfor %}

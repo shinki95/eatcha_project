@@ -96,14 +96,13 @@ def rating_new(request, shop_pk):
 
 
 def recommendation(request):
-    print("in view recommendation")
+
     #produce_dataset()
     recommendation = user_recommendations(str(request.user))
     recommend_restaurant_list = []
     for name in recommendation:
         object = Post.objects.get(title = name)
         recommend_restaurant_list.append(object)
-    print("in view recommendation" + recommend_restaurant_list)
 
     return render(request, 'shop/recommendation_list.html',
                   {'recommendation': recommend_restaurant_list,})
