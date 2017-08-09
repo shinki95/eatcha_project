@@ -4,6 +4,8 @@ from .forms import RatingForm
 from django.contrib.auth.decorators import login_required
 from .models import Rating
 from .utils.collab_filtering import *
+from django.urls import reverse
+
 
 # Create your views here.
 
@@ -18,7 +20,7 @@ def post_tag(request, tag):
 
 
 def post_list(request):
-    print(request.user)
+    print(reverse('shop:list'))
     qs = Post.objects.all()
 
     return render(request, 'shop/post_list.html', {

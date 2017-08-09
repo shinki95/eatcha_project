@@ -186,7 +186,7 @@ form fieldset a:hover { text-decoration: underline; }
 
 		<h1><strong>Welcome.</strong> Please login.</h1>
 
-        <form action="" method="POST" class="sign-up-form">
+        <form action="{% url 'login' %}?next=/shop/" method="POST" class="sign-up-form">
             {%csrf_token%}
 
             {{ form.non_field_errors }}
