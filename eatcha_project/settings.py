@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.naver',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -149,4 +150,4 @@ STATIC_ROOT = os.path.join('BASE-DIR', '..', 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = 'accounts/login'
+LOGIN_URL = '/accounts/login'

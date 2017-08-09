@@ -12,11 +12,16 @@ from allauth.socialaccount.templatetags.socialaccount import get_providers
 # Create your views here.
 def signup(request):
     if request.method == 'POST':
+        print("before SignupForm")
         form = SignupForm(request.POST)
+        print("before valid")
+        print(form.is_valid())
         if form.is_valid():
             form.save()
+            print("after valid, save")
             return redirect(settings.LOGIN_URL) # 회원가입에 성공하면, LOGIN 페이지로 이동
     else:
+        print("method = get")
         form = SignupForm()
     return render(request, 'accounts/signup_form.html',
                   {'form': form,})

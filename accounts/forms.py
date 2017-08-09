@@ -3,19 +3,20 @@ from django import forms
 from . models import Profile
 
 class SignupForm(UserCreationForm):
-    phone_number = forms.CharField()
-    address = forms.CharField()
+    #phone_number = forms.CharField()
+    #address = forms.CharField()
 
     class Meta(UserCreationForm.Meta):
-        fields = ('username', 'password1', 'password2', 'phone_number', 'address', 'email')
+        fields = ('username', 'password1', 'password2', 'email')
+        #fields = ('username', 'password1', 'password2', 'phone_number', 'address', 'email')
         #fields = UserCreationForm.Meta.fields + ('email',)
 
     def save(self):
-        user = super(self).save()
+        user = super().save()
         profile = Profile.objects.create(
             user = user,
-            phone_number = self.cleaned_data['phone_number'],
-            address = self.cleaned_data['address'],
+            #phone_number = self.cleaned_data['phone_number'],
+            #address = self.cleaned_data['address'],
         )
 
         return user

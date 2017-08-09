@@ -80,8 +80,10 @@ form fieldset input[type="text"], input[type="password"], input[id="id_answer"] 
   -webkit-appearance:none;
 }
 
-form fieldset input[type="submit"]{
-	background-color: #008dde; <!--#F98888->
+form fieldset input[type="submit"] {
+	background-color: #008dde;
+    text-align: center;
+>>>>>>> 45a34e666eda8a11ebc2a5d7b628b8878125d536
 	border: none;
 	border-radius: 3px;
 	color: #f4f4f4;
@@ -90,6 +92,19 @@ form fieldset input[type="submit"]{
 	height: 50px;
 	text-transform: uppercase;
 	width: 300px;
+  -webkit-appearance:none;
+}
+form fieldset [type="sign"]{
+    background-color:#f98888;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    color: #f4f4f4;
+    cursor: pointer;
+    font-family: inherit;
+    height: 50px;
+    text-transform: uppercase;
+    width: 300px;
   -webkit-appearance:none;
 }
 
@@ -196,6 +211,7 @@ form fieldset a:hover { text-decoration: underline; }
 
 
 			<p><input type="submit" value="Login"></p>
+            <p><a href="{% url "signup"%}"><input type="sign" value="Signup"></a></p>
 
 			</fieldset>
 
