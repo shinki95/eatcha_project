@@ -1,0 +1,26 @@
+{% extends "shop/layout.html" %}
+
+{%block content%}
+
+<h1>유저가 평가한 식당목록</h1>
+
+
+{%for shop in rated%}
+                <a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a>
+                </figure>
+                <span class="fh5co-meta"><a href="single.html">{{shop.tags}}</a></span>
+                <h2 class="fh5co-article-title"><a href="single.html">{{shop.title}}</a></h2>
+
+{%endfor%}
+
+<h1> 유저가 평가안한 식당목록</h1>
+
+{%for shop in not_rated%}
+                <a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a>
+                </figure>
+                <span class="fh5co-meta"><a href="single.html">{{shop.tags}}</a></span>
+                <h2 class="fh5co-article-title"><a href="single.html">{{shop.title}}</a></h2>
+
+{%endfor%}
+
+{%endblock%}

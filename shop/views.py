@@ -119,8 +119,9 @@ def select_shop(request):
     print(rated_qs)
     print(not_rated_qs)
 
-    return render(request, 'shop/post_list.html', {
-        'shop_list':not_rated_qs,
+    return render(request, 'shop/rated_not_rated_respectively.html', {
+        'rated': rated_qs,
+        'not_rated': not_rated_qs,
         'recommendation': user_recommendations(str(request.user))
     })
 
