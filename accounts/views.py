@@ -25,6 +25,7 @@ def signup(request):
 @login_required
 def profile(request):
     #produce_dataset()
+    point = Post.objects.order_by('-score')[0:8]
     recommendation = user_recommendations(str(request.user))
     recommend_restaurant_list = []
     for name in recommendation:
@@ -32,7 +33,9 @@ def profile(request):
         recommend_restaurant_list.append(object)
 
     return render(request, 'accounts/profile.html',
-                  {'recommendation': recommend_restaurant_list,})
+                  {'recommendation': recommend_restaurant_list,
+                  'point' : point,
+                  })
 
 
 
