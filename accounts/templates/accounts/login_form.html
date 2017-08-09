@@ -66,7 +66,7 @@ strong {
 }
 
 
-form fieldset input[type="text"], input[type="password"] {
+form fieldset input[type="text"], input[type="password"], input[id="id_answer"] {
 	background: #e5e5e5;
 	border: none;
 	border-radius: 3px;
@@ -80,21 +80,8 @@ form fieldset input[type="text"], input[type="password"] {
   -webkit-appearance:none;
 }
 
-form fieldset input[type="submit"] {
-	background-color: #008dde;
-	border: none;
-	border-radius: 3px;
-	color: #f4f4f4;
-	cursor: pointer;
-	font-family: inherit;
-	height: 50px;
-	text-transform: uppercase;
-	width: 300px;
-  -webkit-appearance:none;
-}
-
-form fieldset #signupbutton{
-	background-color: #008dde;
+form fieldset input[type="submit"]{
+	background-color: #008dde; <!--#F98888->
 	border: none;
 	border-radius: 3px;
 	color: #f4f4f4;
@@ -209,7 +196,6 @@ form fieldset a:hover { text-decoration: underline; }
 
 
 			<p><input type="submit" value="Login"></p>
-            <p id = "signupbutton"><a href="{% url "accounts:signup"%}">Signup </a> </p>
 
 			</fieldset>
 

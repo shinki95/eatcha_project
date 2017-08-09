@@ -9,7 +9,6 @@ from django.contrib.auth.views import login as auth_login
 from allauth.socialaccount.models import SocialApp
 from allauth.socialaccount.templatetags.socialaccount import get_providers
 
-
 # Create your views here.
 def signup(request):
     if request.method == 'POST':
@@ -36,8 +35,6 @@ def profile(request):
                   {'recommendation': recommend_restaurant_list,})
 
 
-
-
 def login(request):
     providers = []
     for provider in get_providers():
@@ -50,5 +47,8 @@ def login(request):
     return auth_login(request,
         authentication_form=LoginForm,
         template_name='accounts/login_form.html',
-        extra_context={'providers': providers})
+        extra_context={'providers': providers},
+
+        )
+
 

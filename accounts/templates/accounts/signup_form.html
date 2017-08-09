@@ -151,24 +151,6 @@ form fieldset a:hover { text-decoration: underline; }
 }
 </style>
 </head>
-
-<body>
-<html lang="en-Us">
-<head>
-
-	<meta charset="utf-8">
-
-	<title>Login with Facebook or Twitter</title>
-
-	<link rel="stylesheet" href="css/style.css">
-	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'>
-
-	<!--[if lt IE 9]>
-		<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-</head>
-
 <body>
 
 	<div id="login">
@@ -203,8 +185,8 @@ form fieldset a:hover { text-decoration: underline; }
             <label for="{{ form.password2.id_for_label }}">비밀번호 확인:</label>
             {{ form.password2 }}
             </p> <!-- JS because of IE support; better: placeholder="Password" -->
-
             <p>{{ form.email.errors }}
+
             <label for="{{ form.email.id_for_label }}">이메일:</label>
             {{ form.email }}
             </p> <!-- JS because of IE support; better: placeholder="Password" -->
@@ -218,5 +200,4 @@ form fieldset a:hover { text-decoration: underline; }
 
 </body>
 </html>
-</body>
-</html>
+

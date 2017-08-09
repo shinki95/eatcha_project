@@ -25,7 +25,7 @@ class LoginForm(AuthenticationForm):
     answer = forms.IntegerField(label = '3+3=?')
 
     class Meta(AuthenticationForm):
-        fields = ('username', 'password', 'answer')
+        fields = ('username', 'password', 'answer','email')
 
     def clean_answer(self):
         answer = self.cleaned_data.get('answer', None)
