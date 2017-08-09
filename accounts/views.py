@@ -9,7 +9,6 @@ from django.contrib.auth.views import login as auth_login
 from allauth.socialaccount.models import SocialApp
 from allauth.socialaccount.templatetags.socialaccount import get_providers
 
-
 # Create your views here.
 def signup(request):
     if request.method == 'POST':

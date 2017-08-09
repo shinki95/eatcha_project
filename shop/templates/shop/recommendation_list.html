@@ -1,5 +1,10 @@
-
+{% extends "shop/layout.html" %}
+{% block content %}
 {% for shop in recommendation %}
-    <li>{{ shop.title }}</li>
-    <li><a href="{% url "shop:detail" shop.id %}><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"</a></li>
-{% endfor %}
+    <ul>
+        <li>{{shop.title}}</li>
+        <li><a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a></li>
+    </ul>
+    {%endfor%}
+
+{%endblock%}
