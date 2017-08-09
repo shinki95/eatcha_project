@@ -55,7 +55,7 @@ strong {
 	width: 300px;
 }
 
-form fieldset input[type="text"], input[type="password"] {
+form fieldset input[type="text"], input[type="password"], input[type="email"] {
 	background: #e5e5e5;
 	border: none;
 	border-radius: 3px;
@@ -201,12 +201,12 @@ form fieldset a:hover { text-decoration: underline; }
 
             <p>{{ form.password2.errors }}
             <label for="{{ form.password2.id_for_label }}">비밀번호 확인:</label>
-            {{ form.password1 }}
+            {{ form.password2 }}
             </p> <!-- JS because of IE support; better: placeholder="Password" -->
 
-                <p>{{ form.password1.errors }}
+            <p>{{ form.email.errors }}
             <label for="{{ form.email.id_for_label }}">이메일:</label>
-            {{ form.password1 }}
+            {{ form.email }}
             </p> <!-- JS because of IE support; better: placeholder="Password" -->
 
 			<p><input type="submit"></p>

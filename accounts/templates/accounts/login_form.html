@@ -65,6 +65,7 @@ strong {
 	width: 300px;
 }
 
+
 form fieldset input[type="text"], input[type="password"] {
 	background: #e5e5e5;
 	border: none;
@@ -80,6 +81,19 @@ form fieldset input[type="text"], input[type="password"] {
 }
 
 form fieldset input[type="submit"] {
+	background-color: #008dde;
+	border: none;
+	border-radius: 3px;
+	color: #f4f4f4;
+	cursor: pointer;
+	font-family: inherit;
+	height: 50px;
+	text-transform: uppercase;
+	width: 300px;
+  -webkit-appearance:none;
+}
+
+form fieldset #signupbutton{
 	background-color: #008dde;
 	border: none;
 	border-radius: 3px;
@@ -195,6 +209,7 @@ form fieldset a:hover { text-decoration: underline; }
 
 
 			<p><input type="submit" value="Login"></p>
+            <p id = "signupbutton"><a href="{% url "accounts:signup"%}">Signup </a> </p>
 
 			</fieldset>
 
