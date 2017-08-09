@@ -1,16 +1,483 @@
 {% extends "accounts/layout.html" %}
 {% block content %}
-<h1>{{ user }}'s Profile</h1>
-<ul>
-    <li>email : {{ user.email }}</li>
-    <li>name : {{ user.first_name }}, {{ user.last_name }}</li>
-    <li>is_staff : {{ user.is_staff }}</li>
-    <li>is_superuser : {{ user.is_superuser }}</li>
-    <li>{{ user.date_joined }}</li>
-    <li><img src="{{ user.socialaccount_set.all.first.get_avatar_url }}" /></li>
-    {% for shop in recommendation %}
-        <il>{{shop.title}}</il>
-        <li><a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a></li>
-    {%endfor%}
-</ul>
+<script>
+//tab js//
+$(document).ready(function(e) {
+
+
+$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+  var $this = $(this),
+      label = $this.prev('label');
+
+      if (e.type === 'keyup') {
+        if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+      if( $this.val() === '' ) {
+        label.removeClass('active highlight');
+      } else {
+        label.removeClass('highlight');
+      }
+    } else if (e.type === 'focus') {
+
+      if( $this.val() === '' ) {
+        label.removeClass('highlight');
+      }
+      else if( $this.val() !== '' ) {
+        label.addClass('highlight');
+      }
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+
+  e.preventDefault();
+
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+
+  $(target).fadeIn(600);
+
+});
+//canvas off js//
+$('#menu_icon').click(function(){
+    if($("#content_details").hasClass('drop_menu'))
+    {
+        $("#content_details").addClass('drop_menu1').removeClass('drop_menu');
+    }
+    else{
+      $("#content_details").addClass('drop_menu').removeClass('drop_menu1');
+      }
+
+
+  });
+
+//search box js//
+
+
+    $("#flip").click(function(){
+        $("#panel").slideToggle("5000");
+    });
+
+// sticky js//
+
+$(window).scroll(function(){
+    if ($(window).scrollTop() >= 500) {
+       $('nav').addClass('stick');
+    }
+    else {
+       $('nav').removeClass('stick');
+    }
+});
+
+
+
+
+});
+$(document).ready(function(){
+$('.carousel').carousel({
+    pause: true,
+    interval: false
+});
+});
+
+
+
+
+$(document).ready(function(){
+$(".col-md-3 ").mouseenter(function(){
+    $(this).find(".col-img-responsive02").show(200);
+});
+
+
+$(".col-md-3").mouseleave(function(){
+    $(this).find(".col-img-responsive02").hide();
+});
+});
+</script>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700);
+
+body{
+    background:#e9eaed;
+  }
+
+
+
+.container{
+  }
+
+.wrapper{
+  }
+
+#header{
+  border:1px solid #ddd;
+
+  }
+
+
+
+
+.navbar{
+  border-radius:0;
+  margin-bottom:0;
+  border:none;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+
+  }
+
+.navbar > li >a{
+
+    }
+
+
+
+.navbar-header{
+  }
+
+
+
+
+.site-name{
+  color:#fff;
+  font-size:2.4em;
+  float:left;
+  margin-top:-65px !important;
+  margin-left:15px;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+
+  }
+.site-description{
+  color:#fff;
+  font-size:1.3em;
+  float:left;
+  margin-top:-30px !important;
+  margin-left:15px;
+  }
+
+.main-menu{
+  position:absolute;
+  left:100px;
+  }
+
+.slider, .carousel{
+  max-height:360px;
+  overflow:hidden;
+  }
+
+
+
+
+
+
+
+
+@media (max-width: 1200px) {
+.navbar-brand{
+    max-width: 200px;
+  max-height:100px;
+  float:left;
+  margin-top:-65px;
+  margin-left:15px;
+  -webkit-transition:  all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition:  all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out ;
+  }
+
+
+.tab-pane {background: #ffffff;box-shadow: 0 0 4px rgba(0,0,0,.4);border-radius: 0;text-align: center;}
+.tab-content>.active {margin-top:50px;/*width:100% !important;*/}
+
+.navbar{
+  border-radius:0;
+  margin-bottom:0;
+  border:none;
+  }
+
+.main-menu{
+  left:0;
+  position:relative;
+  }
+
+
+}
+
+@media (max-width: 1200px) {
+  .site-name{
+  color:#fff;
+  font-size:1.5em;
+  float:left;
+  line-height:20px;
+  margin-top:-100px !important;
+  margin-left:50px;
+  }
+.site-description{
+  color:#fff;
+  font-size:1.3em;
+  float:left;
+  margin-top:-80px !important;
+  margin-left:125px;
+  }
+  }
+.nav-tabs {margin: 0;padding: 0;border: 0;}
+.nav-tabs > li > a {background: #DADADA;border-radius: 0;
+    box-shadow: inset 0 -8px 7px -9px rgba(0,0,0,.4),-2px -2px 5px -2px rgba(0,0,0,.4);}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover {background: #F5F5F5;
+    box-shadow: inset 0 0 0 0 rgba(0,0,0,.4),-2px -3px 5px -2px rgba(0,0,0,.4);}
+.tab-pane {background: #ffffff;box-shadow: 0 0 4px rgba(0,0,0,.4);border-radius: 0;text-align: center;padding: 10px;}
+.tab-content>.active {margin-top:50px;/*width:100% !important;*/}
+.tabbable-line > .nav-tabs > li.active {
+  border-bottom: 4px solid #f3565d;
+  position: relative;
+}
+.fa.fa-chevron-circle-right {
+    right: 0;
+}
+.fa.fa-chevron-circle-left {
+    left: 0;
+}
+.fa.fa-chevron-circle-right, .fa.fa-chevron-circle-left {
+    margin-bottom: 1px;
+    position: absolute;
+    top: -30px;
+    color:black;
+}
+.col-img-responsive02 span{
+    color:#fff;
+}
+.col-img-responsive02 {
+
+    display:none;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.carousel-control{
+width:5%;
+}
+.panel-body{
+    position:relative;
+    padding:0px;
+}
+.btn-primary {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    border-radius: 0;
+    bottom: -15px;
+    color: #fff;
+    position: relative;
+    width: 100%;
+
+}
+.btn-primary {
+    background-color: black;
+    border-color: #fff;
+}
+
+
+.panel-heading{
+    padding:0px;
+    position:relative;
+}
+.panel-heading img{
+    width:100%;
+}
+.carousel-control.left {
+    background-image: none;
+}
+.carousel-control.right{
+    background-image: none;
+}
+
+
+.page-header h3 {
+    line-height: 0.88rem;
+    color: #000;
+
+}
+.fa .fa-chevron-circle-right, .fa.fa-chevron-circle-left {
+margin-bottom: 1px;
+position: absolute;
+top: -30px;
+color: black;
+
+
+}
+.carousel-control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 15%;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+</style>
+
+
+
+<div class="wrapper">
+        <div class="container">
+          <div class="row">
+                <div class="col-md-12">
+                <header id="header">
+
+  <div class="slider">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="{{ point.0.image.url }}"  width="1200px" height="400px">
+    </div>
+    <div class="item">
+      <img src="{{ point.1.image.url }}"  width="1200px" height="400px">
+    </div>
+    <div class="item">
+      <img src="{{ point.2.image.url }}"  width="1200px" height="400px">
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="fa fa-angle-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="fa fa-angle-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+                  </div><!--slider-->
+                  <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+
+
+
+                          <span class="site-name"><b>{{user}}'s</b> Profile</span>
+                          <span class="site-description">worpress theme developer</span>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div data-spy="scroll" class="tabbable-panel">
+                        <div class="collapse navbar-collapse tabbable-line" id="mainNav" >
+                          <ul class="nav main-menu navbar-nav">
+                            <li class="active"><a href="#1"  ><i class="fa fa-home"></i>Profile</a></li>
+                            <li><a href="#2"  >추천 맛집</a></li>
+                            <li><a href="#3"  >내가 평가 안한 맛집</a></li>
+                            <li><a href="#4"  >내가 평가한 맛집</a></li>
+                          </ul>
+                          </div> </div><!-- /.navbar-collapse -->
+          </nav>
+                          <div class="tab-content">
+                    <div class="tab-pane active" id="1">
+                        <div class="well well-sm">
+                            <h4>PERSONAL <DATA>Info</DATA></h4>
+                        </div>
+                    <table class="table bio-table">
+                        <tbody>
+                            <tr>
+                                <td>Firstname</td>
+                                <td>: {{ user.first_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Lastname</td>
+                                <td>:{{ user.last_name }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Is_staff</td>
+                                <td>: {{ user.is_staff }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email </td>
+                                <td>: {{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Joined</td>
+                                <td>: {{ user.date_joined }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="2">
+                        <div class="well well-sm">
+                            <h4>추천 맛집 </h4>
+                        </div>
+                    <div class="page-header">
+
+        <p>나와 비슷한 성향의 사람들이 간 음식점을 보여드립니다.</p>
+    </div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<div class="clear" style="width:100%;height:100px;"></div>
+<div >
+    <div id="myCarousel" class="carousel slide">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <div class="row">
+              {% for shop in recommendation %}
+            <div class="col-md-3 col-sm-6">
+
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+
+                      <a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a>
+                    </div>
+                    <div class="panel-body">
+                        <h4>{{shop.title}}</h4>
+                        <p><span class="label label-info">{{ shop.calc_score }}</span></p>
+                        <p>{{shop.tag}}
+                        <a class="btn btn-primary" href="{% url "shop:detail" shop.id %}">More Information<i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+        </div>
+            </div>
+
+            <div class="item">
+              <div class="row">
+            {% endif %}
+            {% endfor %}
+
+          </div>
+          </div>
+          </div>
+
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <i class="fa fa-chevron-circle-left"></i>
+
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+           <i class="fa fa-chevron-circle-right"></i>
+            <span class="sr-only">Next</span>
+          </a>
+    </div>
+
+
+
+</div>
+
+
+
+
+                </header><!--/#HEADER-->
 {%endblock%}
