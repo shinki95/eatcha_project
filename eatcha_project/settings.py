@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'shop',
     'accounts',
+    'plusfriend',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
