@@ -1,3 +1,6 @@
+{% extends "accounts/layout.html" %}
+
+{% block content %}
 {% load socialaccount %}
 
 <html lang="en-Us">
@@ -83,7 +86,6 @@ form fieldset input[type="text"], input[type="password"], input[id="id_answer"] 
 form fieldset input[type="submit"] {
 	background-color: #008dde;
     text-align: center;
->>>>>>> 45a34e666eda8a11ebc2a5d7b628b8878125d536
 	border: none;
 	border-radius: 3px;
 	color: #f4f4f4;
@@ -91,7 +93,7 @@ form fieldset input[type="submit"] {
 	font-family: inherit;
 	height: 50px;
 	text-transform: uppercase;
-	width: 300px;
+	width: 280px;
   -webkit-appearance:none;
 }
 form fieldset [type="sign"]{
@@ -104,7 +106,7 @@ form fieldset [type="sign"]{
     font-family: inherit;
     height: 50px;
     text-transform: uppercase;
-    width: 300px;
+    width: 280px;
   -webkit-appearance:none;
 }
 
@@ -175,6 +177,16 @@ form fieldset a:hover { text-decoration: underline; }
 	text-transform: uppercase;
 	width: 250px;
 }
+.sign2{
+	font-size:18px;
+}
+.sign{
+	font-size : 20px;
+	font-family : 'Nanum Pen Script', sans-serif, sans-serif;}
+.sign1{
+font-size : 57px;
+font-family : 'Nanum Pen Script', sans-serif, sans-serif;
+}
 
     </style>
 
@@ -184,7 +196,7 @@ form fieldset a:hover { text-decoration: underline; }
 
 	<div id="login">
 
-		<h1><strong>Welcome.</strong> Please login.</h1>
+		<h1 class='sign'><strong>Welcome.</strong> Please login.</h1>
 
         <form action="{% url 'login' %}?next=/shop/" method="POST" class="sign-up-form">
             {%csrf_token%}
@@ -211,7 +223,7 @@ form fieldset a:hover { text-decoration: underline; }
 
 
 			<p><input type="submit" value="Login"></p>
-            <p><a href="{% url "signup"%}"><input type="sign" value="Signup"></a></p>
+            <p><a class="sign2" href="{% url "signup"%}"><input type="sign" value="Signup"></a></p>
 
 			</fieldset>
 
@@ -249,3 +261,4 @@ form fieldset a:hover { text-decoration: underline; }
 
 </body>
 </html>
+{% endblock %}

@@ -1,4 +1,6 @@
+{% extends "accounts/layout.html" %}
 
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +28,13 @@
 }
 
 /* ---------- GENERAL ---------- */
-
+.sign{
+	font-size : 20px;
+	font-family : 'Nanum Pen Script', sans-serif, sans-serif;}
+.sign1{
+font-size : 57px;
+font-family : 'Nanum Pen Script', sans-serif, sans-serif;
+}
 body {
 	background: #f4f4f4;
 	color: #5a5656;
@@ -78,7 +86,7 @@ form fieldset input[type="submit"] {
 	font-family: inherit;
 	height: 50px;
 	text-transform: uppercase;
-	width: 300px;
+	width: 280px;
   -webkit-appearance:none;
 }
 
@@ -162,7 +170,7 @@ form fieldset a:hover { text-decoration: underline; }
         {% else %}
         {%endif%}
 
-		<h1><strong>Welcome.</strong> Sign up Page.</h1>
+		<h1 class='sign'><strong>Welcome.</strong> Sign up Page.</h1>
 
 		<form action="" method="POST" class="sign-up-form">
             {%csrf_token%}
@@ -200,4 +208,4 @@ form fieldset a:hover { text-decoration: underline; }
 
 </body>
 </html>
-
+{% endblock %}

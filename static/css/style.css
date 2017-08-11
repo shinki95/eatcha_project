@@ -50,7 +50,9 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 30px;
 }
-
+.rating, .label{
+  font-size:22px;
+}
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
@@ -362,7 +364,7 @@ p {
 }
 @media screen and (max-width: 768px) {
   .fh5co-post-entry.single-entry .fh5co-article-title {
-    font-size: 34px;
+    font-size: 44px;
   }
 }
 .fh5co-post-entry article {
@@ -407,7 +409,7 @@ p {
 }
 .fh5co-post-entry article h2 {
   font-family: 'Nanum Pen Script', cursive;
-  font-size: 34px;
+  font-size: 40px;
   color: #000;
   margin-bottom: 30px;
 }

@@ -115,8 +115,8 @@ def select_shop(request):
     print(request.user)
     #rated_qs=Rating.objects.select_related("shop").filter(user__username__icontains=request.user)
     #not_rated_qs=Rating.objects.select_related("shop").exclude(user__username__icontains=request.user)
-    rated_qs = Post.objects.filter(rating__user__username__icontains='jihun')
-    not_rated_qs = Post.objects.exclude(rating__user__username__icontains='jihun')
+    rated_qs = Post.objects.filter(rating__user__username__icontains='taehun')
+    not_rated_qs = Post.objects.exclude(rating__user__username__icontains='taehun')
 
     print(rated_qs)
     print(not_rated_qs)

@@ -30,6 +30,8 @@ def signup(request):
 @login_required
 def profile(request):
     #produce_dataset()
+    rated_qs = Post.objects.filter(rating__user=request.user)
+    not_rated_qs = Post.objects.exclude(rating__user=request.user)
     point = Post.objects.order_by('-score')[0:8]
     recommendation = user_recommendations(str(request.user))
     recommend_restaurant_list = []
@@ -39,6 +41,8 @@ def profile(request):
 
     return render(request, 'accounts/profile.html',
                   {'recommendation': recommend_restaurant_list,
+                  'rated': rated_qs,
+                  'not_rated': not_rated_qs,
                   'point' : point,
                   })
 
@@ -59,5 +63,4 @@ def login(request):
                        },
 
         )
-
 
