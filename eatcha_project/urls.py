@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^shop/', include('shop.urls', namespace='shop')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^plusfriend/', include('plusfriend.urls', namespace='plusfriend')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

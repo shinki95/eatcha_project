@@ -8,12 +8,14 @@ class Post(models.Model):
     title = models.CharField(max_length=100, verbose_name="식당이름")
     image = models.ImageField()
     content = models.TextField(max_length=500, verbose_name="내용")
+    content2 = models.TextField(max_length=500, verbose_name="메뉴 가격")
+    content3 = models.TextField(max_length=300, verbose_name="영업 시간")
     lnglat = models.CharField(max_length=100, blank=True, verbose_name="식당위치")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     tag_set = models.ManyToManyField('Tag', blank=True)
     score = models.SmallIntegerField(default=0)
-
+    number = models.TextField(max_length=15, verbose_name="전화번호")
     class Meta:
         ordering=['-id']
 

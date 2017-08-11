@@ -1,6 +1,12 @@
 {% extends "shop/layout.html" %}
 
 {%block head%}
+<style>
+    .rating, .label{
+  font-size:22px;
+}
+  
+    </style>
 
 <script>
     $(function() {
@@ -31,7 +37,7 @@
     {% for shop in shop_list %}
             <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
                  <figure>
-                <a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-responsive"></a>
+                <a href="{% url "shop:detail" shop.id %}"><img src="{{ shop.image.url }}" alt="Image" class="img-king"></a>
                 </figure>
                 <span class="fh5co-meta"><a href="single.html">{{shop.tags}}</a></span>
                 <h2 class="fh5co-article-title"><a href="single.html">{{shop.title}}</a></h2>
